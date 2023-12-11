@@ -20,10 +20,20 @@ class BinaryTree {
         }
         // print tree - no var's
         void printTree(){
-
+            PrintTreeLR(this);
         };
         // output with params realization
-        void PrintTreeLR(BinaryTree* Tree, int level){
+        void PrintTreeLR(BinaryTree* Tree, int level = 0){
+            int i;
+            if (Tree)
+            {
+                PrintTreeLR(Tree->right,level+1);
+                for (i=0; i<level; i++)
+                    cout << "\t";
+                cout << Tree->data << "[" << level+1 << "]";
+                PrintTreeLR(Tree->left, level+1);
+            }
+            else  cout << endl;
 
         };
         // find node in tree method
