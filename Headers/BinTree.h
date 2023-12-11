@@ -11,11 +11,15 @@ class BinaryTree {
         // base method insert
         void insert(int value){}
         // submethod insert
-        BinaryTree* insertRecursive(BinaryTree* node, int value){}
+        static BinaryTree* insertRecursive(BinaryTree* node, int value){}
+        //base clear tree method
+        void clearTree(){};
+        //clear tree submethod
+        static void clearTreeRecursive(BinaryTree* node) {};
         // print tree - no var's
         void printTree(){};
         // output with params realization
-        void PrintTreeLR(BinaryTree* Tree, int level){};
+        static void PrintTreeLR(BinaryTree* Tree, int level){};
         // find node in tree method
         bool isNodeInStock(BinaryTree* root, BinaryTree* node){}
         // lowest (least) common ancestor. finding method
