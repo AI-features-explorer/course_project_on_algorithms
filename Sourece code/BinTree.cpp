@@ -10,15 +10,20 @@ class BinaryTree {
         BinaryTree* right;
 
         BinaryTree(int val) : data(val), left(nullptr), right(nullptr) {}
-        // first insert
         void insert(int value){
-
+            insertRecursive(this, value);
         }
-        // all subsequent inserts
         BinaryTree* insertRecursive(BinaryTree* node, int value){
+            if (node == nullptr) { return new BinaryTree(value);}
 
+            if (value < node->data) {
+                node->left = insertRecursive(node->left, value);
+            } else if (value > node->data) {
+                node->right = insertRecursive(node->right, value);
+            }
+
+            return node;
         }
-
         void printTree(){
             PrintTreeLR(this);
         };

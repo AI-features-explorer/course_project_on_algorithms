@@ -8,9 +8,9 @@ class BinaryTree {
         BinaryTree* right;
 
         BinaryTree(int val) : data(val), left(nullptr), right(nullptr) {}
-        // first insert
+        // base method insert
         void insert(int value){}
-        // all subsequent inserts
+        // submethod insert
         BinaryTree* insertRecursive(BinaryTree* node, int value){}
         // print tree - no var's
         void printTree(){};
