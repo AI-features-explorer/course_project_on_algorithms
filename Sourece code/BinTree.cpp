@@ -32,8 +32,8 @@ class BinaryTree {
 
         void clearTreeRecursive(BinaryTree* node) {
             if (node) {
-                clearTree(node->left);
-                clearTree(node->right);
+                clearTreeRecursive(node->left);
+                clearTreeRecursive(node->right);
                 delete node;
             }
         }
