@@ -1,7 +1,6 @@
 #include "BinTree.h"
 #include <iostream>
 
-//todo: class realization
 class BinaryTree {
     public:
         int data;
@@ -62,13 +61,12 @@ class BinaryTree {
             return isNodeInStock(root->left, node) || isNodeInStock(root->right, node);
         }
         
-        // lowest (least) common ancestor. finding method
         bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){
-
+            //todo is findLCA can be possible method
         };
-        // lowest (least) common ancestor. giving result in console method
-        void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){
 
+        void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){
+            //todo findLCA method for giving result
         };
 
 };

@@ -16,13 +16,13 @@ class BinaryTree {
         void clearTree(){};
         //clear tree submethod
         static void clearTreeRecursive(BinaryTree* node) {};
-        // print tree - no var's
+        // base print tree method
         void printTree(){};
-        // output with params realization
+        // print tree submethod
         static void PrintTreeLR(BinaryTree* Tree, int level){};
         // find node in tree method
         bool isNodeInStock(BinaryTree* root, BinaryTree* node){}
-        // lowest (least) common ancestor. finding method
+        // lowest (least) common ancestor. existence search method
         bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){};
         // lowest (least) common ancestor. giving result in console method
         void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){};
