@@ -18,11 +18,10 @@ class BinaryTree {
         BinaryTree* insertRecursive(BinaryTree* node, int value){
 
         }
-        // print tree - no var's
+
         void printTree(){
             PrintTreeLR(this);
         };
-        // output with params realization
         void PrintTreeLR(BinaryTree* Tree, int level = 0){
             int i;
             if (Tree)
@@ -36,9 +35,10 @@ class BinaryTree {
             else  cout << endl;
 
         };
-        // find node in tree method
         bool isNodeInStock(BinaryTree* root, BinaryTree* node){
-
+            if (root == nullptr) { return false; }
+            if (root == node) { return true; }
+            return isNodeInStock(root->left, node) || isNodeInStock(root->right, node);
         }
         // lowest (least) common ancestor. finding method
         bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){
