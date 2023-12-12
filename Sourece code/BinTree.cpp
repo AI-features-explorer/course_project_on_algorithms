@@ -9,6 +9,10 @@ class BinaryTree {
 
         BinaryTree(int val) : data(val), left(nullptr), right(nullptr) {}
 
+        ~BinaryTree() {
+        clearTree();
+        }
+
         void insert(int value){
             insertRecursive(this, value);
         }
