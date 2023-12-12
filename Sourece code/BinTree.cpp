@@ -38,6 +38,7 @@ class BinaryTree {
                 clearTreeRecursive(node->left);
                 clearTreeRecursive(node->right);
                 delete node;
+                node = nullptr;
             }
         }
         
