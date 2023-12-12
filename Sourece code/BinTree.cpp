@@ -2,87 +2,87 @@
 #include <iostream>
 
 class BinaryTree {
-    public:
-        int data;
+private:
+    int data;
         BinaryTree* left;
         BinaryTree* right;
+public:
+    BinaryTree(int val) : data(val), left(nullptr), right(nullptr) {}
 
-        BinaryTree(int val) : data(val), left(nullptr), right(nullptr) {}
+    ~BinaryTree() {
+    clearTree();
+    }
 
-        ~BinaryTree() {
-        clearTree();
+    void insert(int value){
+        insertRecursive(this, value);
+    }
+    
+    static BinaryTree* insertRecursive(BinaryTree* node, int value){
+        if (node == nullptr) { return new BinaryTree(value);}
+
+        if (value < node->data) {
+            node->left = insertRecursive(node->left, value);
+        } else if (value > node->data) {
+            node->right = insertRecursive(node->right, value);
         }
 
-        void insert(int value){
-            insertRecursive(this, value);
+        return node;
+    }
+
+    void clearTree(){
+        clearTreeRecursive(this);
+    };
+
+    void clearTreeRecursive(BinaryTree* node) {
+        if (node) {
+            clearTreeRecursive(node->left);
+            clearTreeRecursive(node->right);
+            delete node;
+            node = nullptr;
         }
-        
-        static BinaryTree* insertRecursive(BinaryTree* node, int value){
-            if (node == nullptr) { return new BinaryTree(value);}
-
-            if (value < node->data) {
-                node->left = insertRecursive(node->left, value);
-            } else if (value > node->data) {
-                node->right = insertRecursive(node->right, value);
-            }
-
-            return node;
+    }
+    
+    void printTree() const {
+        PrintTreeLR(this);
+    };
+    
+    static void PrintTreeLR(const BinaryTree* Tree, int level = 0){
+        int i;
+        if (Tree)
+        {
+            PrintTreeLR(Tree->right,level+1);
+            for (i=0; i<level; i++)
+                std::cout << "\t";
+            std::cout << Tree->data << "[" << level+1 << "]";
+            PrintTreeLR(Tree->left, level+1);
         }
+        else  std::cout << std::endl;
 
-        void clearTree(){
-            clearTreeRecursive(this);
-        };
-
-        void clearTreeRecursive(BinaryTree* node) {
-            if (node) {
-                clearTreeRecursive(node->left);
-                clearTreeRecursive(node->right);
-                delete node;
-                node = nullptr;
-            }
+    };
+    
+    bool isNodeInStock(const BinaryTree* root, BinaryTree* node){
+        if (root == nullptr) { return false; }
+        if (root == node) { return true; }
+        return isNodeInStock(root->left, node) || isNodeInStock(root->right, node);
+    }
+    
+    bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){
+        
+        if (root == nullptr) { return false; }
+        if (root == x || root == y)
+        {
+            lca = root;
+            return true;
         }
-        
-        void printTree(){
-            PrintTreeLR(this);
-        };
-        
-        static void PrintTreeLR(BinaryTree* Tree, int level = 0){
-            int i;
-            if (Tree)
-            {
-                PrintTreeLR(Tree->right,level+1);
-                for (i=0; i<level; i++)
-                    std::cout << "\t";
-                std::cout << Tree->data << "[" << level+1 << "]";
-                PrintTreeLR(Tree->left, level+1);
-            }
-            else  std::cout << std::endl;
+    
+        bool left = findLCA(root->left, lca, x, y);
+        bool right = findLCA(root->right, lca, x, y);
+        if (left && right) { lca = root; }
 
-        };
-        
-        bool isNodeInStock(BinaryTree* root, BinaryTree* node){
-            if (root == nullptr) { return false; }
-            if (root == node) { return true; }
-            return isNodeInStock(root->left, node) || isNodeInStock(root->right, node);
-        }
-        
-        bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){
-            
-            if (root == nullptr) { return false; }
-            if (root == x || root == y)
-            {
-                lca = root;
-                return true;
-            }
-        
-            bool left = findLCA(root->left, lca, x, y);
-            bool right = findLCA(root->right, lca, x, y);
-            if (left && right) { lca = root; }
+        return left || right;
+    };
 
-            return left || right;
-        };
-
-        void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){
+    void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){
             
             BinaryTree* lca = nullptr;
             if (isNodeInStock(root, y) && isNodeInStock(root, x)) {
