@@ -1,6 +1,5 @@
 #pragma once
 
-//todo: class and structure pattern
 class BinaryTree {
     public:
         int data;

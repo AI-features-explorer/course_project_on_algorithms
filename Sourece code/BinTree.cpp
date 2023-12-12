@@ -62,11 +62,35 @@ class BinaryTree {
         }
         
         bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){
-            //todo is findLCA can be possible method
+            
+            if (root == nullptr) { return false; }
+            if (root == x || root == y)
+            {
+                lca = root;
+                return true;
+            }
+        
+            bool left = findLCA(root->left, lca, x, y);
+            bool right = findLCA(root->right, lca, x, y);
+            if (left && right) { lca = root; }
+
+            return left || right;
         };
 
         void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){
-            //todo findLCA method for giving result
+            
+            BinaryTree* lca = nullptr;
+            if (isNodeInStock(root, y) && isNodeInStock(root, x)) {
+                findLCA(root, lca, x, y);
+            }
+        
+            // if LCA exists, print it
+            if (lca != nullptr) {
+                std::cout << "Lowest common ancestor is " << lca->data << std::endl;
+            }
+            else {
+                std::cout << "Lowest common ancestor does not exist\n";
+            }
         };
 
 };
