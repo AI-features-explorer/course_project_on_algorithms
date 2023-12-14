@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build Binary Tree",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++11",
+                "${workspaceFolder}/Source code/main.cpp",  // Используйте полные пути
+                "${workspaceFolder}/Libs/BinaryTree.cpp",   // Используйте полные пути
+                "-o",
+                "${workspaceFolder}/CourseProjectOnAlgorithms"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
