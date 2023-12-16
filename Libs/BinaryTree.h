@@ -20,7 +20,7 @@ namespace  CourseProjectOnAlgorithms{
             //base clear tree method
             void clearTree();
             //clear tree submethod
-            static void clearTreeRecursive(BinaryTree* &node) ;
+            static void clearTreeRecursive(BinaryTree* node) ;
             // base print tree method
             void printTree() const ;
             // print tree submethod

@@ -29,6 +29,8 @@ int main()
 
     // Clean up the memory
     delete tree;
+    int a;
+    cin >> a;
     
     return 0;
 }

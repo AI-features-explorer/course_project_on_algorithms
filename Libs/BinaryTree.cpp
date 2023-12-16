@@ -5,7 +5,8 @@ using namespace CourseProjectOnAlgorithms;
 
 
 BinaryTree::~BinaryTree() {
-    clearTree();
+    delete left;
+   delete right;
 }
 
 void BinaryTree::insert(int value){
@@ -25,11 +26,10 @@ BinaryTree* BinaryTree::insertRecursive(BinaryTree* node, int value){
 }
 
 void BinaryTree::clearTree(){
-    BinaryTree* temp = this;
-    clearTreeRecursive(temp);
+    clearTreeRecursive(this);
 };
 
-void BinaryTree::clearTreeRecursive(BinaryTree* &node) {
+void BinaryTree::clearTreeRecursive(BinaryTree* node) {
     if (node) {
         clearTreeRecursive(node->left);
         clearTreeRecursive(node->right);
