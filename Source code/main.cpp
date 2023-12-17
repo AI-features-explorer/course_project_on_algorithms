@@ -19,12 +19,12 @@ int main()
     tree->insert(35);
 
     // Print the tree
-    std::cout << "Binary Tree:" << std::endl;
+    cout << "Binary Tree:" << std::endl;
     tree->printTree();
 
     // Find Lowest Common Ancestor (LCA) of two nodes
     
-    tree->findLCA(tree, 5, 15);
+    cout << "LCA is "<< tree->findLCA(tree, 5, 15);
 
     // Clean up the memory
     delete tree;
