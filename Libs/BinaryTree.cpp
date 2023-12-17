@@ -1,4 +1,5 @@
 #include "BinaryTree.h"
+#include <vector>
 #include <iostream>
 using namespace CourseProjectOnAlgorithms;
 
@@ -27,7 +28,7 @@ BinaryTree* BinaryTree::insertRecursive(BinaryTree* node, int value){
 
 void BinaryTree::clearTree(){
     clearTreeRecursive(this);
-};
+}
 
 void BinaryTree::clearTreeRecursive(BinaryTree* node) {
     if (node) {
@@ -40,7 +41,7 @@ void BinaryTree::clearTreeRecursive(BinaryTree* node) {
 
 void BinaryTree::printTree() const {
     PrintTreeLR(this, 0);
-};
+}
 
 void BinaryTree::PrintTreeLR(const BinaryTree* Tree, int level = 0){
     int i;
@@ -54,43 +55,38 @@ void BinaryTree::PrintTreeLR(const BinaryTree* Tree, int level = 0){
     }
     else  std::cout << std::endl;
 
-};
-
-bool BinaryTree::isNodeInStock(const BinaryTree* root, BinaryTree* node){
-    if (root == nullptr) { return false; }
-    if (root == node) { return true; }
-    return isNodeInStock(root->left, node) || isNodeInStock(root->right, node);
 }
 
-bool BinaryTree::findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y){
-    
-    if (root == nullptr) { return false; }
-    if (root == x || root == y)
-    {
-        lca = root;
+bool BinaryTree::findPath(const BinaryTree* root, std::vector<int>& path, int target){
+     if (root == NULL) 
+        return false;
+ 
+    path.push_back(root->data);
+
+    if (root->data == target)
         return true;
-    }
+ 
+    if ((root->left && findPath(root->left, path, target))
+        || (root->right && findPath(root->right, path, target)))
+        return true;
+ 
+    path.pop_back();
+    return false;
+}
 
-    bool left = findLCA(root->left, lca, x, y);
-    bool right = findLCA(root->right, lca, x, y);
-    if (left && right) { lca = root; }
-
-    return left || right;
-};
-
-void BinaryTree::findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y){
+int  BinaryTree::findLCA(BinaryTree* root, int x, int y){
             
-            BinaryTree* lca = nullptr;
-            if (isNodeInStock(root, y) && isNodeInStock(root, x)) {
-                findLCA(root, lca, x, y);
-            }
-        
-            // if LCA exists, print it
-            if (lca != nullptr) {
-                std::cout << "Lowest common ancestor is " << lca->data << std::endl;
-            }
-            else {
-                std::cout << "Lowest common ancestor does not exist\n";
-            }
-        };
+    std::vector<int> path1, path2;
+ 
+    if (!findPath(root, path1, x)
+        || !findPath(root, path2, y))
+        return -1;
+ 
+    /* Compare the paths to get the first different value */
+    int i;
+    for (i = 0; i < path1.size() && i < path2.size(); i++)
+        if (path1[i] != path2[i])
+            break;
+    return path1[i - 1]; 
+}
 

@@ -23,9 +23,8 @@ int main()
     tree->printTree();
 
     // Find Lowest Common Ancestor (LCA) of two nodes
-    BinaryTree* x = tree->insertRecursive(tree, 5);   // Assuming 5 exists in the tree
-    BinaryTree* y = tree->insertRecursive(tree, 15);  // Assuming 15 exists in the tree
-    tree->findLCA(tree, x, y);
+    
+    tree->findLCA(tree, 5, 15);
 
     // Clean up the memory
     delete tree;

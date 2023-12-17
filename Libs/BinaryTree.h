@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
 
@@ -25,12 +26,10 @@ namespace  CourseProjectOnAlgorithms{
             void printTree() const ;
             // print tree submethod
             static void PrintTreeLR( const BinaryTree* Tree, int level);
-            // find node in tree method
-            bool isNodeInStock( const BinaryTree* root, BinaryTree* node);
-            // lowest (least) common ancestor. existence search method
-            bool findLCA(BinaryTree* root, BinaryTree* &lca, BinaryTree* x, BinaryTree* y);
+            // Finds the path, returns true if path exists otherwise false
+            bool findPath( const BinaryTree* root, std::vector<int>& path, int target);
             // lowest (least) common ancestor. giving result in console method
-            void findLCA(BinaryTree* root, BinaryTree* x, BinaryTree* y);
+            int  findLCA(BinaryTree* root, int x, int y);
 
     };
 };
