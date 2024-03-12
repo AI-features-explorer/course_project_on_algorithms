@@ -2,40 +2,77 @@
 #include <cctype>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
-#include <cstdlib> // Для функции rand()
-#include <ctime>   // Для функции time()
+#include <limits>
+#include <cstdlib>
+#include <windows.h>
+#include <cstdlib> 
+#include <ctime>  
 using namespace CourseProjectOnAlgorithms;
 using namespace std;
 
 int main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    
     BinaryTree* tree = new BinaryTree(20);
 
     // Insert elements into the tree
     srand(time(nullptr)); 
         for (int i = 0; i < 14; ++i) {
-            tree->insert(rand() % 50); // Вставляем случайное значение от 0 до 50
+            tree->insert(rand() % 50);
         }
 
-    // Print the tree
-    cout << "Binary Tree:" << std::endl;
-    tree->printTree();
+    bool loop = true;
 
-    // geting the variabels
-    int x; int y;
-    cout << "Write the first hode: ";
-    cin >> x;
-    cout << "Write the first hode: ";
-    cin >> y;
+    while(loop) {
+        // Print the tree
+        cout << "Binary Tree:" << std::endl;
+        tree->printTree();
 
-    // Find Lowest Common Ancestor (LCA) of two nodes
-    cout << "LCA is "<< tree->findLCA(tree, x, y);
+        // geting the variabels
+        bool isValueIncorrect = true;
+        int x; int y;
 
-    // Clean up the memory and wait 
+        do {
+            cout << endl << "Write the first node: > ";
+            if (cin >> x) {
+                isValueIncorrect = false;
+            } else {
+                cout << "Incorrect input for first node." << endl;
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+
+            cout << endl << "Write the second node: > ";
+            if (cin >> y) {
+                isValueIncorrect = false;
+            } else {
+                cout << "Incorrect input for second node." << endl;
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+
+        } while (isValueIncorrect);
+
+        // Find Lowest Common Ancestor (LCA) of two nodes
+        int result = tree->findLCA(tree, x, y);
+        if(result != -1)
+            cout << endl  << "LCA is " << result << endl;
+        else {cout << endl << "Incorrect data or the given numbers are not in the tree" << endl; }
+        
+        string arg;
+        cout << endl << "exit the program? y/n > ";
+        cin >> arg;
+
+        if (arg == "y" || arg == "Y"|| arg == "Yes"|| arg == "yes"|| arg == "YES")
+        { cout << endl; loop = false;}
+        else { cout << endl << "continue..." << endl; system("cls"); }
+    }
+
+    // Clean up the memory
     delete tree;
-    int end;
-    cin >> end;
-    
+    system("pause.exe");
     return 0;
 }
