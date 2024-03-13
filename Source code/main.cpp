@@ -14,6 +14,7 @@ using namespace std;
 
 int main()
 {
+    //for unicode
     SetConsoleOutputCP(CP_UTF8);
     
     BinaryTree* tree = new BinaryTree(20);
@@ -43,6 +44,7 @@ int main()
                 cout << "Incorrect input for first node." << endl;
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
             }
 
             cout << endl << "Write the second node: > ";
@@ -52,6 +54,7 @@ int main()
                 cout << "Incorrect input for second node." << endl;
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
             }
 
         } while (isValueIncorrect);

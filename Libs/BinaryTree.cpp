@@ -4,8 +4,8 @@
 #include <queue>
 #include <map>
 #include <vector>
-#include <cstdlib> // Для функции rand()
-#include <ctime>   // Для функции time()
+#include <cstdlib>
+#include <ctime> 
 #include <string>
 #include <functional>
 #include <algorithm>
@@ -72,7 +72,6 @@ void BinaryTree::PrintTreeLR(const BinaryTree* Tree, int level = 0){
 
 }
 
-
 void BinaryTree::PrintTreeUD(const BinaryTree* node) {
         #define _MAX(x, y) ((x) > (y) ? (x) : (y))
         #define _MIN(x, y) ((x) < (y) ? (x) : (y))
@@ -125,8 +124,6 @@ void BinaryTree::PrintTreeUD(const BinaryTree* node) {
         #undef _MAX
         #undef _MIN
     }
-
-
 
 bool BinaryTree::findPath(const BinaryTree* root, std::vector<int>& path, int target){
      if (root == NULL) 

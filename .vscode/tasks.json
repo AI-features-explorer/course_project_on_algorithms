@@ -7,8 +7,8 @@
             "command": "g++",
             "args": [
                 "-std=c++11",
-                "${workspaceFolder}/Source code/main.cpp",  // Используйте полные пути
-                "${workspaceFolder}/Libs/BinaryTree.cpp",   // Используйте полные пути
+                "${workspaceFolder}/Source code/main.cpp",  
+                "${workspaceFolder}/Libs/BinaryTree.cpp",   
                 "-o",
                 "${workspaceFolder}/CourseProjectOnAlgorithms"
             ],
