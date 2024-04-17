@@ -14,57 +14,62 @@ using namespace std;
 
 int main()
 {
-    //for unicode
     SetConsoleOutputCP(CP_UTF8);
-    
-    BinaryTree* tree = new BinaryTree(20);
+   
+    const int array_size = 19; 
+    int init_data[array_size]; 
+    std::srand(std::time(0));
 
-    // Insert elements into the tree
-    srand(time(nullptr)); 
-        for (int i = 0; i < 14; ++i) {
-            tree->insert(rand() % 50);
-        }
+    for(int i = 0; i < array_size; ++i) {
+        init_data[i] = std::rand() % 80; 
+    }
+
+    BinaryTree* tree = new BinaryTree(20);
+    tree = tree->createBinaryTree(init_data, 0, array_size - 1);
 
     bool loop = true;
 
     while(loop) {
-        // Print the tree
+
         cout << "Binary Tree:" << std::endl;
         tree->printTree();
 
-        // geting the variabels
-        bool isValueIncorrect = true;
-        int x; int y;
+        bool isFirstValueIncorrect = true;
+        bool isSecondValueIncorrect = true;
+        int x, y;
 
         do {
             cout << endl << "Write the first node: > ";
             if (cin >> x) {
-                isValueIncorrect = false;
+                isFirstValueIncorrect = false;
             } else {
                 cout << "Incorrect input for first node." << endl;
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                break;
+                continue;
             }
+        
+        } while (isFirstValueIncorrect);
 
+         do {
             cout << endl << "Write the second node: > ";
             if (cin >> y) {
-                isValueIncorrect = false;
+                isSecondValueIncorrect = false;
             } else {
                 cout << "Incorrect input for second node." << endl;
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                break;
+                continue;
             }
+            
+        } while (isSecondValueIncorrect);
 
-        } while (isValueIncorrect);
-
-        // Find Lowest Common Ancestor (LCA) of two nodes
         int result = tree->findLCA(tree, x, y);
-        if(result != -1)
+        if(result != -1) 
             cout << endl  << "LCA is " << result << endl;
-        else {cout << endl << "Incorrect data or the given numbers are not in the tree" << endl; }
-        
+        else 
+            cout << endl << "First or second (or both) value not in the tree";
+
         string arg;
         cout << endl << "exit the program? y/n > ";
         cin >> arg;
@@ -74,7 +79,6 @@ int main()
         else { cout << endl << "continue..." << endl; system("cls"); }
     }
 
-    // Clean up the memory
     delete tree;
     system("pause.exe");
     return 0;

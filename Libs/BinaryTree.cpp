@@ -25,20 +25,16 @@ BinaryTree::~BinaryTree() {
    delete right;
 }
 
-void BinaryTree::insert(int value){
-    insertRecursive(this, value);
-}
+BinaryTree* BinaryTree::createBinaryTree(int arr[], int start, int end) {
 
-BinaryTree* BinaryTree::insertRecursive(BinaryTree* node, int value){
-    if (node == nullptr) { return new BinaryTree(value);}
-
-    if (value < node->data) {
-        node->left = insertRecursive(node->left, value);
-    } else if (value > node->data) {
-        node->right = insertRecursive(node->right, value);
-    }
-
-    return node;
+    if (start > end) return nullptr;
+    int mid = (start + end) / 2;
+    BinaryTree* root = new BinaryTree(arr[mid]);
+  
+    root->left = createBinaryTree(arr, start, mid - 1);
+    root->right = createBinaryTree(arr, mid + 1, end);
+  
+    return root;
 }
 
 void BinaryTree::clearTree(){
@@ -150,7 +146,6 @@ int  BinaryTree::findLCA(BinaryTree* root, int x, int y){
         || !findPath(root, path2, y))
         return -1;
  
-    /* Compare the paths to get the first different value */
     int i;
     for (i = 0; i < path1.size() && i < path2.size(); i++)
         if (path1[i] != path2[i])

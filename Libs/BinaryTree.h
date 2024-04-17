@@ -4,8 +4,6 @@
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
 
-//global chars set
-
 // ASCII chars
 /** static std::string ch_hor = "-", ch_ver = "|", ch_ddia = "/",
  ch_rddia = "\\", ch_udia = "\\", ch_ver_hor = "|-", ch_udia_hor = "\\-",
@@ -35,23 +33,13 @@ namespace  CourseProjectOnAlgorithms{
             BinaryTree* &right;
 
             ~BinaryTree();
-            // base method insert
-            void insert(int value);
-            // submethod insert
-            static BinaryTree* insertRecursive(BinaryTree* node, int value);
-            //base clear tree method
+            BinaryTree* createBinaryTree(int arr[], int start, int end);
             void clearTree();
-            //clear tree submethod
             static void clearTreeRecursive(BinaryTree* node) ;
-            // base print tree method
-            void printTree() const ;
-            // print tree submethod
+            void printTree() const;
             static void PrintTreeLR( const BinaryTree* Tree, int level);
-            //print tree ascii chars
             static void PrintTreeUD(const BinaryTree* node);
-            // Finds the path, returns true if path exists otherwise false
             bool findPath( const BinaryTree* root, std::vector<int>& path, int target);
-            // lowest (least) common ancestor. giving result in console method
             int  findLCA(BinaryTree* root, int x, int y);
 
     };
