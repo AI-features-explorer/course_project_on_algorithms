@@ -2,7 +2,7 @@
 
 In the course of the course work, we developed a binary tree structure and implemented an algorithm to find the Lowest Common Ancestor (LCA) of two nodes in this tree.
 
-One of the important problems solved with a binary tree is finding the least common ancestor of two nodes. In the course work we implemented a non-recursive algorithm for finding the least common ancestor (findLCA) and submethod ((findPath))
+One of the important problems solved with a binary tree is finding the least common ancestor of two nodes. In the course work we implemented a non-recursive algorithm for finding the least common ancestor (findLCA) and submethod (findPath)
 
 ### Here is the code:
 
@@ -48,7 +48,9 @@ int  BinaryTree::findLCA(BinaryTree* root, int x, int y){
 
 ### Here the working example
 
-![1713705507036](image/readme/1713705507036.mp4)
+<video width="520" height="340" controls>
+  <source src="image/readme/1713705507036.mp4" type="video/mp4">
+</video>
 
-`note: the g+ compiler was used for this work`
+### `note: the g++ compiler was used for this work`
   
