@@ -1,9 +1,8 @@
 #pragma once
-#include <vector>
-#include <string>
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
-
+#include <vector>
+#include <string>
 // ASCII chars
 /** static std::string ch_hor = "-", ch_ver = "|", ch_ddia = "/",
  ch_rddia = "\\", ch_udia = "\\", ch_ver_hor = "|-", ch_udia_hor = "\\-",

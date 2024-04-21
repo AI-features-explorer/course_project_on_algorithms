@@ -16,7 +16,7 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
    
-    const int array_size = 19; 
+    const int array_size = 20; 
     int init_data[array_size]; 
     std::srand(std::time(0));
 

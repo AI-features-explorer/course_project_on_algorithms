@@ -1,22 +1,11 @@
 #include "BinaryTree.h"
 #include <iostream>
-#include <iomanip>
-#include <queue>
-#include <map>
 #include <vector>
-#include <cstdlib>
-#include <ctime> 
 #include <string>
 #include <functional>
 #include <algorithm>
 #include <tuple>
 #include <stdexcept>
-#include <memory>
-#ifdef _WIN32
-    #include <windows.h>
-#else
-    #include <locale.h>
-#endif
 
 using namespace CourseProjectOnAlgorithms;
 
