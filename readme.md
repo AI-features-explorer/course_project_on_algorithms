@@ -31,7 +31,7 @@ bool BinaryTree::findPath(const BinaryTree* root, std::vector<int>& path, int ta
 
 ```cpp
 int  BinaryTree::findLCA(BinaryTree* root, int x, int y){
-          
+        
     std::vector<int> path1, path2;
  
     if (!findPath(root, path1, x)
@@ -48,9 +48,6 @@ int  BinaryTree::findLCA(BinaryTree* root, int x, int y){
 
 ### Here the working example
 
-<video width="520" height="340" controls>
-  <source src="image/readme/2024-04-21 16-14-41.mp4" type="video/mp4">
-</video>
+![1713706390470](image/readme/1713706390470.gif)
 
 ### `note: the g++ compiler was used for this work`
-  
