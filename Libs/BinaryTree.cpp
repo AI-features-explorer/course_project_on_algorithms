@@ -14,47 +14,21 @@ BinaryTree::~BinaryTree() {
    delete right;
 }
 
-BinaryTree* BinaryTree::createBinaryTree(int arr[], int start, int end) {
+BinaryTree::BinaryTree(int arr[], int start, int end)  : data(_data = -1), left(_left = nullptr), right(_right = nullptr)  {
 
-    if (start > end) return nullptr;
-    int mid = (start + end) / 2;
-    BinaryTree* root = new BinaryTree(arr[mid]);
-  
-    root->left = createBinaryTree(arr, start, mid - 1);
-    root->right = createBinaryTree(arr, mid + 1, end);
-  
-    return root;
-}
-
-void BinaryTree::clearTree(){
-    clearTreeRecursive(this);
-}
-
-void BinaryTree::clearTreeRecursive(BinaryTree* node) {
-    if (node) {
-        clearTreeRecursive(node->left);
-        clearTreeRecursive(node->right);
-        delete node;
-        node = nullptr;
+    if (start > end) {
+        this->left = nullptr;
+        this->right = nullptr;
+        return;
     }
+    int mid = (start + end) / 2;
+    this->data = arr[mid];
+    this->left = (start <= mid - 1) ? new BinaryTree(arr, start, mid - 1) : nullptr;
+    this->right = (mid + 1 <= end) ? new BinaryTree(arr, mid + 1, end) : nullptr;
 }
 
 void BinaryTree::printTree() const {
     PrintTreeUD(this);
-}
-
-void BinaryTree::PrintTreeLR(const BinaryTree* Tree, int level = 0){
-    int i;
-    if (Tree)
-    {
-        PrintTreeLR(Tree->right,level+1);
-        for (i=0; i<level; i++)
-            std::cout << "\t";
-        std::cout << Tree->data << "[" << level+1 << "]";
-        PrintTreeLR(Tree->left, level+1);
-    }
-    else  std::cout << std::endl;
-
 }
 
 void BinaryTree::PrintTreeUD(const BinaryTree* node) {

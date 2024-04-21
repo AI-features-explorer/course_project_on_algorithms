@@ -24,8 +24,7 @@ int main()
         init_data[i] = std::rand() % 80; 
     }
 
-    BinaryTree* tree = new BinaryTree(20);
-    tree = tree->createBinaryTree(init_data, 0, array_size - 1);
+    BinaryTree* tree = new BinaryTree(init_data, 0, array_size - 1);
 
     bool loop = true;
 
